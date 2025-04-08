@@ -1,11 +1,11 @@
+import Header from "./layout/Header/Header";
 
-
-
-
-export default function App() {
+function App() {
   return (
-    <h1 className="text-3xl font-bold underline">
-      Hello world!
-    </h1>
-  )
+    <div className="min-h-screen w-full bg-white">
+      <Header />
+    </div>
+  );
 }
+
+export default App;
