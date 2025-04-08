@@ -3,8 +3,11 @@ import CircleDecoration from "./CircleDecoration";
 function SummerCollection() {
   return (
     <section className="flex flex-col justify-center items-center rounded-3xl bg-[linear-gradient(90deg,#96E9FB_0%,#ABECD6_100%)] h-[902px] max-md:py-16 max-md:h-auto max-sm:py-10">
-      <div className="flex flex-col gap-16 items-center pt-20 w-[388px] max-md:pt-10 max-md:w-[90%] max-sm:gap-10 max-sm:pt-5">
-        <div className="flex flex-col gap-8 items-center w-[394px] max-md:w-full">
+      <div className="flex flex-col gap-16 items-center pt-20 w-full max-w-[388px] max-md:pt-10 px-4">
+
+
+      <div className="flex flex-col gap-8 items-center w-full max-w-[394px] px-4">
+
           <h2 className="text-base font-bold tracking-normal leading-6 text-sky-600">
             SUMMER 2025
           </h2>

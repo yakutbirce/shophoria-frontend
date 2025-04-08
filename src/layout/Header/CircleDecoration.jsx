@@ -7,7 +7,8 @@ function CircleDecoration() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
         xmlnsXlink="http://www.w3.org/1999/xlink"
-        className="w-[384px] h-[372px] flex-shrink-0 max-lg:w-[300px] max-lg:h-[290px] max-sm:w-[250px] max-sm:h-[242px]"
+        className="w-full max-w-[384px] h-auto flex-shrink-0"
+
       >
         <circle cx="184.531" cy="180.949" r="147.182" fill="white" />
         <circle cx="25.3686" cy="64.5729" r="23.532" fill="white" />
