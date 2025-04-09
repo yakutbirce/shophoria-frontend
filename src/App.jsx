@@ -1,9 +1,14 @@
-import Header from "./layout/Header/Header";
+import React from "react";
+import Navbar from "./components/Navbar/Navbar";
+import MobileContainer from "./components/Container/MobileContainer";
+import Container from "./components/Container";
 
 function App() {
   return (
-    <div className="min-h-screen w-full max-w-screen-sm mx-auto overflow-hidden bg-white">
-      <Header />
+    <div>
+      <Navbar />
+      
+      < Container/>
     </div>
   );
 }
