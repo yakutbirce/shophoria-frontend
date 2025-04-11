@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Container from "./components/Container";
 import Clients from "./components/Clients";
 import ShopCards from "./components/ShopCards";
+import ProductCards from "./components/ProductCards";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
       < Container/>
       <Clients />
       <ShopCards />
+      <ProductCards />
     </div>
   );
 }
