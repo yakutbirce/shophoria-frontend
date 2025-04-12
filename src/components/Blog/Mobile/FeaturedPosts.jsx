@@ -4,7 +4,7 @@ import PostCard from './PostCard';
 const FeaturedPosts = () => {
   const posts = [
     {
-      image: "https://cdn.builder.io/api/v1/image/assets/TEMP/8f3a292a1dafd2977b540d287ebdd430aab34fa2",
+      image: "https://via.placeholder.com/328x300?text=Post+1",
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
@@ -12,7 +12,7 @@ const FeaturedPosts = () => {
       description: "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
     },
     {
-      image: "https://cdn.builder.io/api/v1/image/assets/TEMP/d212daa7d0ac37113eb89461216adc1715c02f9e",
+      image: "https://via.placeholder.com/328x300?text=Post+2",
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],

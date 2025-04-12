@@ -7,6 +7,7 @@ import ProductCards from "./components/ProductCards";
 import Content7 from "./components/Content7";
 import Features12 from "./components/Features12/Features12";
 import BlogSection from "./components/Blog/BlogSection";
+import Footer from "./components/Footer/Footer";
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
       <Content7 />
       <Features12/>
       <BlogSection /> 
+      <Footer /> 
     </div>
   );
 }
