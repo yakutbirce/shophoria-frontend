@@ -3,18 +3,18 @@ import React from "react";
 const Features12 = () => {
   const features = [
     {
-      imageSrc: "https://via.placeholder.com/72",
+      imageSrc: "https://placehold.co/72",
       title: "Easy Wins",
       description: "Get your best looking smile now!",
     },
     {
-      imageSrc: "https://via.placeholder.com/72",
+      imageSrc: "https://placehold.co/72",
       title: "Concrete",
       description:
         "Defalcate is most focused in helping you discover your most beautiful smile",
     },
     {
-      imageSrc: "https://via.placeholder.com/72",
+      imageSrc: "https://placehold.co/72",
       title: "Hack Growth",
       description: "Overcame any hurdle or any other problem.",
     },

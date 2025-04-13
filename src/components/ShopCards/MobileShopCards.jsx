@@ -5,21 +5,21 @@ const products = [
     id: 1,
     title: "Top Product Of the Week",
     image:
-      "https://via.placeholder.com/400x556?text=Product+1", // 👈 Builder link yerine placeholder
+      "https://placehold.co/400x556?text=Product+1", 
     height: "556px",
   },
   {
     id: 2,
     title: "Top Product Of the Week",
     image:
-      "https://via.placeholder.com/400x398?text=Product+2",
+      "https://placehold.co/400x398?text=Product+2",
     height: "398px",
   },
   {
     id: 3,
     title: "Top Product Of the Week",
     image:
-      "https://via.placeholder.com/400x398?text=Product+3",
+      "https://placehold.co/400x398?text=Product+3",
     height: "398px",
   },
 ];

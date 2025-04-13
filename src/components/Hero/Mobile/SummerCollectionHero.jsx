@@ -1,6 +1,7 @@
 import React from "react";
-import { HeroContent } from "./HeroContent";
+
 import { HeroImage } from "./HeroImage";
+import HeroContent from "./HeroContent";
 
 export default function SummerCollectionHero() {
   return (

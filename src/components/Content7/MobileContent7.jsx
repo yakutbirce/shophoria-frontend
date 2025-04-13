@@ -27,12 +27,12 @@ const MobileContent7 = () => {
         <section className="flex gap-6 items-start mt-12 w-full max-w-[375px]">
           <div className="flex gap-3 px-px w-[374px]">
             <img
-              src="https://via.placeholder.com/157x360?text=Image+1"
+              src="https://placehold.co/157x360?text=Image+1"
               alt="Featured product 1"
               className="object-contain aspect-[0.43] w-[157px]"
             />
             <img
-              src="https://via.placeholder.com/204x360?text=Image+2"
+              src="https://placehold.co/204x360?text=Image+2"
               alt="Featured product 2"
               className="object-contain aspect-[0.56] w-[204px]"
             />

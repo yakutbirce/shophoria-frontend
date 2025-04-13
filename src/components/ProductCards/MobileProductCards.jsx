@@ -2,35 +2,35 @@ import React from "react";
 
 const products = [
   {
-    image: "https://via.placeholder.com/343x418?text=Product+1",
+    image: "https://placehold.co/343x418?text=Product+1",
     title: "Graphic Design",
     category: "English Department",
     originalPrice: "16.48",
     salePrice: "6.48",
   },
   {
-    image: "https://via.placeholder.com/343x418?text=Product+2",
+    image: "https://placehold.co/343x418?text=Product+2",
     title: "Graphic Design",
     category: "English Department",
     originalPrice: "16.48",
     salePrice: "6.48",
   },
   {
-    image: "https://via.placeholder.com/343x418?text=Product+3",
+    image: "https://placehold.co/343x418?text=Product+3",
     title: "Graphic Design",
     category: "English Department",
     originalPrice: "16.48",
     salePrice: "6.48",
   },
   {
-    image: "https://via.placeholder.com/343x418?text=Product+4",
+    image: "https://placehold.co/343x418?text=Product+4",
     title: "Graphic Design",
     category: "English Department",
     originalPrice: "16.48",
     salePrice: "6.48",
   },
   {
-    image: "https://via.placeholder.com/343x418?text=Product+5",
+    image: "https://placehold.co/343x418?text=Product+5",
     title: "Graphic Design",
     category: "English Department",
     originalPrice: "16.48",

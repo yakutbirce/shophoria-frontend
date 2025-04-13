@@ -1,4 +1,7 @@
 import React from "react";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+
 import Navbar from "./components/Navbar/Navbar";
 import Container from "./components/Container";
 import Clients from "./components/Clients";

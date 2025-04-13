@@ -10,14 +10,14 @@ const DesktopContent7 = () => {
             <div className="flex gap-5 w-[513px]">
               <div className="w-[44%]">
                 <img
-                  src="https://via.placeholder.com/217x490?text=Image+1"
+                  src="https://placehold.co/217x490?text=Image+1"
                   alt="Gallery image 1"
                   className="object-contain aspect-[0.44] w-full"
                 />
               </div>
               <div className="w-[56%]">
                 <img
-                  src="https://via.placeholder.com/296x528?text=Image+2"
+                  src="https://placehold.co/296x528?text=Image+2"
                   alt="Gallery image 2"
                   className="object-contain aspect-[0.56] w-full"
                 />

@@ -2,16 +2,16 @@ import React from "react";
 
 const products = {
   featured: {
-    image: "https://via.placeholder.com/611x572?text=Featured+Product",
+    image: "https://placehold.co/611x572?text=Featured+Product",
     title: "Top Product Of the Week",
   },
   standard: [
     {
-      image: "https://via.placeholder.com/557x280?text=Product+2",
+      image: "https://placehold.co/557x280?text=Product+2",
       title: "Top Product Of the Week",
     },
     {
-      image: "https://via.placeholder.com/557x280?text=Product+3",
+      image: "https://placehold.co/557x280?text=Product+3",
       title: "Top Product Of the Week",
     },
   ],

@@ -4,7 +4,7 @@ import PostCard from './PostCard';
 const FeaturedPosts = () => {
   const posts = [
     {
-      image: "https://via.placeholder.com/328x300?text=Post+1",
+      image: "https://placehold.co/328x300?text=Post+1",
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
@@ -12,7 +12,7 @@ const FeaturedPosts = () => {
       description: "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
     },
     {
-      image: "https://via.placeholder.com/328x300?text=Post+2",
+      image: "https://placehold.co/328x300?text=Post+2",
       date: "22 April 2021",
       comments: 10,
       tags: ["Google", "Trending", "New"],
