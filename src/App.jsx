@@ -1,7 +1,7 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-
 import Navbar from "./components/Navbar/Navbar";
 import Container from "./components/Container";
 import Clients from "./components/Clients";
@@ -15,17 +15,21 @@ import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
-    <div>
+    <>
       <Navbar />
-      < Container/>
-      <Clients />
-      <ShopCards />
-      <ProductCards />
-      <Content7 />
-      <Features12/>
-      <BlogSection /> 
-      <Footer /> 
-    </div>
+      <Switch>
+        <Route exact path="/">
+          <Container />
+          <Clients />
+          <ShopCards />
+          <ProductCards />
+          <Content7 />
+          <Features12 />
+          <BlogSection />
+        </Route>
+      </Switch>
+      <Footer />
+    </>
   );
 }
 
