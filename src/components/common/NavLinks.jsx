@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 const links = [
   { name: "Home", path: "/" },
-  { name: "Shop", path: "/shop" },
-  { name: "Featured", path: "/featured" },
-  { name: "Login", path: "/login" },
+  { name: "Product", path: "/product" },
+  { name: "Pricing", path: "/pricing" },
+  { name: "Contact", path: "/contact" },
 ];
 
 
