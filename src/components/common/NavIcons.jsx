@@ -19,7 +19,7 @@ function NavIcons() {
         <User size={24} />
       </button>
 
-      {/* Menü (Eğer desktopta da hamburger menü göstermek istersen) */}
+      {/* Menü  */}
       <button aria-label="Menu" className="focus:outline-none">
         <Menu size={24} />
       </button>

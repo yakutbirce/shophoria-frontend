@@ -12,7 +12,7 @@ const ProductDetails = ({
   lessonInfo,
 }) => {
   return (
-    <article className="flex flex-col p-6 w-full max-w-[292px]">
+    <article className="flex flex-col p-6 w-full max-w-xs">
       {/* Başlık ve Puan */}
       <div className="flex justify-between items-center w-full mb-2">
         <h6 className="text-sm font-bold text-sky-500">{category}</h6>

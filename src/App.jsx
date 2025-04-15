@@ -18,6 +18,7 @@ function App() {
     <>
       <Navbar />
       <Switch>
+        {/* Anasayfa */}
         <Route exact path="/">
           <Container />
           <Clients />
@@ -27,6 +28,77 @@ function App() {
           <Features12 />
           <BlogSection />
         </Route>
+
+        {/* Login Sayfası */}
+        <Route path="/login">
+          <div className="text-center text-2xl mt-20">Login Page</div>
+        </Route>
+
+        {/* Search Sayfası */}
+        <Route path="/search">
+          <div className="text-center text-2xl mt-20">Search Page</div>
+        </Route>
+
+        {/* Cart Sayfası */}
+        <Route path="/cart">
+          <div className="text-center text-2xl mt-20">Cart Page</div>
+        </Route>
+
+        <Route path="/shop">
+  <div className="text-center text-2xl mt-20">Shop Page</div>
+</Route>
+
+<Route path="/featured">
+  <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
+    Featured Page – Coming Soon 
+  </div>
+</Route>
+
+<Route path="/products">
+  <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
+    All Products – Coming Soon
+  </div>
+</Route>
+
+{/* Footer linkleri */}
+<Route path="/about-us">
+          <div className="text-center text-2xl mt-20">About Us Page</div>
+        </Route>
+        <Route path="/carrier">
+          <div className="text-center text-2xl mt-20">Career Page</div>
+        </Route>
+        <Route path="/we-are-hiring">
+          <div className="text-center text-2xl mt-20">We're Hiring Page</div>
+        </Route>
+        <Route path="/blog">
+          <div className="text-center text-2xl mt-20">Blog Page</div>
+        </Route>
+        <Route path="/business-marketing">
+          <div className="text-center text-2xl mt-20">Business Marketing Page</div>
+        </Route>
+        <Route path="/user-analytic">
+          <div className="text-center text-2xl mt-20">User Analytic Page</div>
+        </Route>
+        <Route path="/live-chat">
+          <div className="text-center text-2xl mt-20">Live Chat Page</div>
+        </Route>
+        <Route path="/unlimited-support">
+          <div className="text-center text-2xl mt-20">Unlimited Support Page</div>
+        </Route>
+        <Route path="/ios-and-android">
+          <div className="text-center text-2xl mt-20">iOS & Android Page</div>
+        </Route>
+        <Route path="/watch-a-demo">
+          <div className="text-center text-2xl mt-20">Watch a Demo Page</div>
+        </Route>
+        <Route path="/customers">
+          <div className="text-center text-2xl mt-20">Customers Page</div>
+        </Route>
+        <Route path="/api">
+          <div className="text-center text-2xl mt-20">API Page</div>
+        </Route>
+
+
       </Switch>
       <Footer />
     </>

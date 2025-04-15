@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const products = [
   {
@@ -13,14 +15,14 @@ const products = [
     title: "Top Product Of the Week",
     image:
       "https://placehold.co/400x398?text=Product+2",
-    height: "398px",
+    height: "556px",
   },
   {
     id: 3,
     title: "Top Product Of the Week",
     image:
       "https://placehold.co/400x398?text=Product+3",
-    height: "398px",
+    height: "556px",
   },
 ];
 
@@ -45,12 +47,15 @@ const MobileShopCards = () => {
                   <h2 className="text-2xl font-bold text-white max-w-48">
                     {product.title}
                   </h2>
-                  <button
-                    className="px-10 py-4 text-sm font-bold tracking-wide leading-6 text-white rounded-md border border-white border-solid"
-                    aria-label="Explore Items"
-                  >
-                    EXPLORE ITEMS
-                  </button>
+                  <Link to="/featured">
+  <button
+    className="px-10 py-4 text-sm font-bold tracking-wide leading-6 text-white rounded-md border border-white border-solid"
+    aria-label="Explore Items"
+  >
+    EXPLORE ITEMS
+  </button>
+</Link>
+
                 </div>
               </div>
             </div>

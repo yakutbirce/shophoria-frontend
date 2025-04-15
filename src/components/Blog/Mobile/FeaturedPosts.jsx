@@ -22,7 +22,7 @@ const FeaturedPosts = () => {
   ];
 
   return (
-    <section className="flex flex-col gap-20 items-center px-0 py-20 mx-auto bg-white max-w-screen-sm">
+    <section className="flex flex-col gap-20 items-center px-4 py-20 bg-white max-w-screen-sm w-full overflow-x-hidden">
       <header className="flex flex-col gap-2.5 items-center">
         <p className="text-sm font-bold tracking-wide leading-6 text-sky-500">Practice Advice</p>
         <h2 className="text-4xl font-bold tracking-wide leading-[50px] text-slate-800 text-center">Featured Posts</h2>

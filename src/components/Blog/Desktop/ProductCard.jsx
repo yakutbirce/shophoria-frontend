@@ -6,7 +6,7 @@ const ProductCard = ({ imageUrl, actionImages, productDetails }) => {
   return (
     <article className="flex flex-wrap bg-white shadow-md rounded-md overflow-hidden w-full max-w-[508px]">
       {/* Sol: Ürün görseli ve ikonlar */}
-      <div className="relative w-[209px] h-auto">
+      <div className="relative w-full max-w-[209px]">
         <img
           src={imageUrl}
           alt={productDetails.title}

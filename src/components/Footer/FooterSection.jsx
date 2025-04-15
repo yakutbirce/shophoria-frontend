@@ -1,4 +1,13 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+const convertToPath = (text) =>
+  "/" +
+  text
+    .toLowerCase()
+    .replace(/&/g, "and")
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
 
 const FooterSection = ({ title, links }) => {
   return (
@@ -8,13 +17,13 @@ const FooterSection = ({ title, links }) => {
       </h3>
       <nav className="flex flex-col gap-2">
         {links.map((link, index) => (
-          <a
+          <Link
             key={index}
-            href="#"
+            to={convertToPath(link)}
             className="text-sm tracking-wide text-neutral-500 hover:text-slate-800 transition-colors"
           >
             {link}
-          </a>
+          </Link>
         ))}
       </nav>
     </section>

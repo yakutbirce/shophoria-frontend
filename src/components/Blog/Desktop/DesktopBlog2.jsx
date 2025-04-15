@@ -63,14 +63,15 @@ const DesktopBlog2 = () => {
   ];
 
   return (
-    <section className="flex overflow-hidden flex-col justify-center items-center px-20 bg-white max-md:px-5">
-      <div className="flex overflow-hidden flex-col items-center py-20 w-full max-w-[1050px] max-md:max-w-full">
+    <section className="flex flex-col justify-center items-center px-4 md:px-20 bg-white overflow-x-hidden">
+      <div className="flex flex-col items-center py-20 w-full max-w-screen-xl">
         <SectionHeader />
         <div className="flex flex-wrap gap-8 items-center mt-24 max-md:mt-10 max-md:max-w-full">
           {products.map((product, index) => (
             <div
               key={index}
-              className="flex flex-col items-center self-stretch my-auto min-w-60 w-[508px] max-md:max-w-full"
+              className="flex flex-col items-center w-full max-w-[508px]"
+
             >
               <ProductCard {...product} />
             </div>

@@ -3,8 +3,9 @@ import SummerCollectionHero from "../Hero/Mobile/SummerCollectionHero";
 
 export default function MobileContainer() {
   return (
-    <div className="md:hidden" style={{ backgroundColor: "#ABECD6" }}>
-      <SummerCollectionHero />
-    </div>
+    <div className="md:hidden bg-[#ABECD6]">
+    <SummerCollectionHero />
+  </div>
+  
   );
 }

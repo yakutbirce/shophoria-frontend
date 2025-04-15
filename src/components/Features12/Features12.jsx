@@ -1,24 +1,29 @@
 import React from "react";
+import iconEasyWins from "../../assets/logos/icon-easywins.png";
+import iconConcrete from "../../assets/logos/icon-concrete.png";
+import iconHackGrowth from "../../assets/logos/icon-hackgrowth.png";
+
 
 const Features12 = () => {
   const features = [
     {
-      imageSrc: "https://placehold.co/72",
+      imageSrc: iconEasyWins,
       title: "Easy Wins",
       description: "Get your best looking smile now!",
     },
     {
-      imageSrc: "https://placehold.co/72",
+      imageSrc: iconConcrete,
       title: "Concrete",
       description:
         "Defalcate is most focused in helping you discover your most beautiful smile",
     },
     {
-      imageSrc: "https://placehold.co/72",
+      imageSrc: iconHackGrowth,
       title: "Hack Growth",
       description: "Overcame any hurdle or any other problem.",
     },
   ];
+  
 
   return (
     <section className="flex flex-col justify-center items-center px-20 pb-4 text-center bg-white max-md:px-5">

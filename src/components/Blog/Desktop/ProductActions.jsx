@@ -9,7 +9,7 @@ const iconComponents = {
 
 const ProductActions = ({ images }) => {
   return (
-    <div className="flex absolute gap-2.5 top-[320px] left-5 max-md:top-[200px] max-md:left-2">
+    <div className="flex absolute gap-2.5 top-[320px] left-5 max-md:top-[200px] max-md:left-2 overflow-hidden">
       {images.map((src, index) => (
         <button
           key={index}

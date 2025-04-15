@@ -54,7 +54,7 @@ const DesktopNavbar = () => {
           {/* Orta: Menü Linkleri */}
           <nav className="flex gap-8">
             <a
-              href="#home"
+              href="/"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
               Home
@@ -97,7 +97,7 @@ const DesktopNavbar = () => {
 
           {/* Sağ: Login/Register ve İkonlar */}
           <div className="flex items-center space-x-4">
-            <a href="#login" className="text-blue-500 hover:underline">
+            <a href="/login" className="text-blue-500 hover:underline">
               Login / Register
             </a>
             <button aria-label="Search" className="focus:outline-none">

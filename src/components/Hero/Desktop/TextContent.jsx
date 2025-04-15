@@ -14,7 +14,7 @@ const TextContent = () => {
 
   const slides = [
     {
-      subtitle: "SUMMER 2020",
+      subtitle: "SUMMER 2025",
       title: "NEW COLLECTION",
       description: "We know how large objects will act, but things on a small scale.",
     },

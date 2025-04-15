@@ -3,7 +3,7 @@ import LogoGrid from "./LogoGrid";
 
 const MobileClients = () => {
   return (
-    <main className="flex overflow-hidden flex-col justify-center self-stretch py-28 mx-auto w-full bg-white max-w-[480px]">
+    <main className="flex flex-col justify-center items-center py-20 w-full bg-white max-w-screen-sm px-4">
       <div className="overflow-hidden w-full">
         <LogoGrid />
       </div>

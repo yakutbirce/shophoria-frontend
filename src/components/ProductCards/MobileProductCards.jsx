@@ -1,4 +1,6 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
 
 const products = [
   {
@@ -83,9 +85,14 @@ const MobileProductCards = () => {
       </div>
 
       {/* Load More */}
-      <button className="px-10 py-4 mt-6 text-sm font-bold text-sky-500 rounded-md border border-sky-500">
-        LOAD MORE PRODUCTS
-      </button>
+      <Link to="/products">
+  <button
+    className="px-10 py-4 mt-6 text-sm font-bold text-sky-500 rounded-md border border-sky-500"
+    aria-label="Load more products"
+  >
+    LOAD MORE PRODUCTS
+  </button>
+</Link>
     </section>
   );
 };

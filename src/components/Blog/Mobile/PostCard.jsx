@@ -3,7 +3,7 @@ import { AlarmClock, ChartArea } from 'lucide-react';
 
 const PostCard = ({ image, date, comments, tags, title, description }) => {
   return (
-    <article className="flex flex-col bg-white shadow-sm w-[328px]">
+    <article className="flex flex-col bg-white shadow-sm w-full max-w-[328px]">
       <div className="relative h-[300px]">
         <img src={image} alt={title} className="object-cover w-full h-full" />
         <div className="absolute top-5 left-5 px-2.5 py-0 text-sm font-bold leading-6 text-white bg-red-500 rounded shadow-sm">
@@ -11,23 +11,32 @@ const PostCard = ({ image, date, comments, tags, title, description }) => {
         </div>
       </div>
 
-      <div className="flex flex-col gap-2.5 px-6 pt-6 pb-9">
-        <div className="flex gap-4 items-center">
-          {tags.map((tag, index) => (
-            <span key={index} className="text-xs tracking-wide leading-4">{tag}</span>
-          ))}
-        </div>
+      <div className="flex flex-col gap-2.5 px-4 pt-6 pb-9">
+      <div className="flex gap-4 items-center">
+  {tags.map((tag, index) => (
+    <span
+      key={index}
+      className={`text-xs tracking-wide leading-4 ${
+        tag === "Google" ? "text-[#8EC2F2]" : "text-neutral-500"
+      }`}
+    >
+      {tag}
+    </span>
+  ))}
+</div>
+
 
         <h3 className="text-xl tracking-wide leading-8 text-slate-800">{title}</h3>
         <p className="text-sm tracking-wide leading-5 text-neutral-500">{description}</p>
 
         <div className="flex justify-between items-center py-4">
           <div className="flex gap-1.5 items-center text-neutral-500 text-xs">
-            <AlarmClock size={14} className="text-sky-500" />
+            <AlarmClock size={14} className="text-[#23A6F0]" />
             <time>{date}</time>
           </div>
           <div className="flex gap-1.5 items-center text-neutral-500 text-xs">
-            <ChartArea size={14} className="text-emerald-700" />
+          <ChartArea size={14} className="text-[#23856D]" />
+
             <span>{comments} comments</span>
           </div>
         </div>
