@@ -1,19 +1,21 @@
 import React from 'react';
 import PostCard from './PostCard';
+import featured1 from "../../../assets/logos/featuredposts1.png";
+import featured2 from "../../../assets/logos/featuredposts2.png";
 
 const FeaturedPosts = () => {
   const posts = [
     {
-      image: "https://placehold.co/328x300?text=Post+1",
-      date: "22 April 2021",
+      image: featured1,
+      date: "22 April 2025",
       comments: 10,
       tags: ["Google", "Trending", "New"],
       title: "Loudest à la Madison #1 (L'integral)",
       description: "We focus on ergonomics and meeting you where you work. It's only a keystroke away.",
     },
     {
-      image: "https://placehold.co/328x300?text=Post+2",
-      date: "22 April 2021",
+      image: featured2,
+      date: "22 April 2025",
       comments: 10,
       tags: ["Google", "Trending", "New"],
       title: "Loudest à la Madison #1 (L'integral)",

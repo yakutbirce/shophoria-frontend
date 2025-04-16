@@ -1,4 +1,4 @@
-"use client";
+
 import React, { useState } from "react";
 
 const NewsletterForm = () => {
@@ -7,7 +7,7 @@ const NewsletterForm = () => {
   const handleSubscribe = (e) => {
     e.preventDefault();
     console.log("Subscribed with:", email);
-    setEmail(""); // input'u temizle
+    setEmail(""); 
   };
 
   return (

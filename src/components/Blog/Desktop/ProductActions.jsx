@@ -1,15 +1,16 @@
 import React from "react";
-import { Heart, Search, Eye } from "lucide-react";
+import { Heart, ShoppingCart, Eye } from "lucide-react";
 
 const iconComponents = {
   "/icons/favorite.svg": <Heart size={20} strokeWidth={1.5} />,
-  "/icons/search.svg": <Search size={20} strokeWidth={1.5} />,
+  "/icons/search.svg": <ShoppingCart size={20} strokeWidth={1.5} />, 
   "/icons/eye.svg": <Eye size={20} strokeWidth={1.5} />,
 };
 
 const ProductActions = ({ images }) => {
   return (
-    <div className="flex absolute gap-2.5 top-[320px] left-5 max-md:top-[200px] max-md:left-2 overflow-hidden">
+    <div className="flex absolute gap-2.5 bottom-5 left-10 max-md:left-4">
+
       {images.map((src, index) => (
         <button
           key={index}

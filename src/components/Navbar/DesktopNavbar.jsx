@@ -60,7 +60,7 @@ const DesktopNavbar = () => {
               Home
             </a>
             <a
-  href="#shop"
+  href="/shop"
   className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors flex items-center gap-1"
 >
   Shop
@@ -70,25 +70,25 @@ const DesktopNavbar = () => {
   </svg>
 </a>
             <a
-              href="#about"
+              href="/about"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
               About
             </a>
             <a
-              href="#blog"
+              href="/blog"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
               Blog
             </a>
             <a
-              href="#contact"
+              href="/contact"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
               Contact
             </a>
             <a
-              href="#pages"
+              href="/pages"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
               Pages

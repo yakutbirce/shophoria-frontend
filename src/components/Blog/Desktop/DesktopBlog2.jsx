@@ -2,10 +2,14 @@ import React from "react";
 import SectionHeader from "../Common/SectionHeader";
 import ProductCard from "./ProductCard";
 
+import featured1 from "../../../assets/logos/featuredposts1.png";
+import featured2 from "../../../assets/logos/featuredposts2.png";
+
+
 const DesktopBlog2 = () => {
   const products = [
     {
-      imageUrl: "/images/product-1.jpg", 
+      imageUrl: featured1, 
       actionImages: [
         "/icons/favorite.svg",
         "/icons/search.svg",
@@ -33,7 +37,7 @@ const DesktopBlog2 = () => {
       },
     },
     {
-      imageUrl: "/images/product-2.jpg",
+      imageUrl: featured2, 
       actionImages: [
         "/icons/favorite.svg",
         "/icons/search.svg",

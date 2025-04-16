@@ -19,12 +19,12 @@ const TextContent = () => {
       description: "We know how large objects will act, but things on a small scale.",
     },
     {
-      subtitle: "SPRING 2021",
+      subtitle: "SPRING 2025",
       title: "FRESH LOOKS",
       description: "Design that makes you stand out and shine in the crowd.",
     },
     {
-      subtitle: "WINTER 2022",
+      subtitle: "WINTER 2025",
       title: "TRENDING NOW",
       description: "Experience the best styling tips of the season, curated just for you.",
     },

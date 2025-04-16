@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { useLocation ,Switch, Route } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Navbar from "./components/Navbar/Navbar";
@@ -11,12 +11,18 @@ import Content7 from "./components/Content7";
 import Features12 from "./components/Features12/Features12";
 import BlogSection from "./components/Blog/BlogSection";
 import Footer from "./components/Footer/Footer";
+import ShopPage from './components/Shop/ShopPage';
+import ShopMobileNavbar from "./components/Navbar/ShopMobileNavbar";
+import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 
 
 function App() {
+  const location = useLocation();
   return (
     <>
-      <Navbar />
+    
+     {/* Koşullu Navbar */}
+     {location.pathname !== "/shop" && <Navbar />}
       <Switch>
         {/* Anasayfa */}
         <Route exact path="/">
@@ -45,8 +51,22 @@ function App() {
         </Route>
 
         <Route path="/shop">
-  <div className="text-center text-2xl mt-20">Shop Page</div>
+  <>
+    {/* Shop'a özel mobil navbar */}
+    <div className="md:hidden">
+      <ShopMobileNavbar />
+    </div>
+
+    
+    <div className="hidden md:block">
+      <DesktopNavbar />
+    </div>
+
+    {/* Shop içeriği */}
+    <ShopPage />
+  </>
 </Route>
+
 
 <Route path="/featured">
   <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
