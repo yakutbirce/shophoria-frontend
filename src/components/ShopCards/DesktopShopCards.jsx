@@ -47,7 +47,7 @@ const DesktopShopCards = () => {
       </article>
 
       {/* Standard Cards */}
-      <div className="flex flex-col gap-6">
+      <div className="flex flex-col gap-3">
         {products.standard.map((product, index) => (
           <article key={index} className="relative w-[557px] max-md:w-full">
             <img
