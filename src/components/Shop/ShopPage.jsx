@@ -1,5 +1,7 @@
 import React from "react";
 import { ChevronRight } from "lucide-react";
+import ShopCards18 from "./ShopCards18";
+import FilterRow from "./FilterRow";
 
 const Breadcrumb = () => {
   return (
@@ -26,7 +28,10 @@ const ShopPage = () => {
             <Breadcrumb />
           </div>
         </div>
+        <ShopCards18 />
+        
       </div>
+      <FilterRow />
     </section>
   );
 };
