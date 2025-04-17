@@ -58,13 +58,13 @@ const ShopMobileNavbar = () => {
             <User size={20} /> Login / Register
           </Link>
           <Link to="/search" className="flex items-center gap-2 text-[#23A6F0]">
-            <Search size={20} /> Search
+            <Search size={20} /> 
           </Link>
           <Link to="/cart" className="flex items-center gap-2 text-[#23A6F0]">
-            <ShoppingCart size={20} /> Cart
+            <ShoppingCart size={20} /> 
           </Link>
           <Link to="/wishlist" className="flex items-center gap-2 text-[#23A6F0]">
-            <Heart size={20} /> Wishlist
+            <Heart size={20} /> 
           </Link>
         </div>
       </nav>

@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 // Ürün Kartı
 const ProductCard = () => {
   return (
-    <div className="w-full md:w-1/4 flex flex-col items-center gap-3 px-2 md:px-4 mb-14">
+    <div className="flex flex-col items-center gap-3 px-2 md:px-4 mb-14">
       {/* Görsel Placeholder */}
       <div className="w-full aspect-[348/427] md:aspect-[239/300] max-w-[348px] md:max-w-[239px] bg-gray-300" />
 
@@ -42,7 +43,11 @@ const ProductCardsSection = ({ currentPage }) => {
     <section className="flex flex-col items-center px-4 py-10 bg-white">
       <div className="flex flex-wrap justify-start max-w-[1300px]">
         {currentProducts.map((_, i) => (
-          <ProductCard key={i} />
+          <div key={i} className="w-full md:w-1/4">
+            <Link to={`/product/${i + 1}`} className="block hover:cursor-pointer">
+              <ProductCard />
+            </Link>
+          </div>
         ))}
       </div>
     </section>

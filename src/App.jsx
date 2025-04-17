@@ -14,15 +14,22 @@ import Footer from "./components/Footer/Footer";
 import ShopPage from './components/Shop/ShopPage';
 import ShopMobileNavbar from "./components/Navbar/ShopMobileNavbar";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
+import ProductDetailPage from "./components/ProductDetail/ProductDetailPage";
 
 
 function App() {
   const location = useLocation();
+
+  // Shop benzeri sayfalar için koşul (hem /shop hem /product/:id)
+  const isShopLayout =
+    location.pathname.startsWith("/shop") ||
+    location.pathname.startsWith("/product");
+
   return (
     <>
-    
-     {/* Koşullu Navbar */}
-     {location.pathname !== "/shop" && <Navbar />}
+      {/* Koşullu Global Navbar */}
+      {!isShopLayout && <Navbar />}
+
       <Switch>
         {/* Anasayfa */}
         <Route exact path="/">
@@ -35,53 +42,62 @@ function App() {
           <BlogSection />
         </Route>
 
-        {/* Login Sayfası */}
+        {/* Login */}
         <Route path="/login">
           <div className="text-center text-2xl mt-20">Login Page</div>
         </Route>
 
-        {/* Search Sayfası */}
+        {/* Search */}
         <Route path="/search">
           <div className="text-center text-2xl mt-20">Search Page</div>
         </Route>
 
-        {/* Cart Sayfası */}
+        {/* Cart */}
         <Route path="/cart">
           <div className="text-center text-2xl mt-20">Cart Page</div>
         </Route>
 
+        {/* SHOP PAGE */}
         <Route path="/shop">
-  <>
-    {/* Shop'a özel mobil navbar */}
-    <div className="md:hidden">
-      <ShopMobileNavbar />
-    </div>
+          <>
+            <div className="md:hidden">
+              <ShopMobileNavbar />
+            </div>
+            <div className="hidden md:block">
+              <DesktopNavbar />
+            </div>
+            <ShopPage />
+          </>
+        </Route>
 
-    
-    <div className="hidden md:block">
-      <DesktopNavbar />
-    </div>
+        {/* PRODUCT DETAIL PAGE */}
+        <Route path="/product/:id">
+          <>
+            <div className="md:hidden">
+              <ShopMobileNavbar />
+            </div>
+            <div className="hidden md:block">
+              <DesktopNavbar />
+            </div>
+            <ProductDetailPage />
+          </>
+        </Route>
 
-    {/* Shop içeriği */}
-    <ShopPage />
-  </>
-</Route>
+        {/* Diğer Sayfalar */}
+        <Route path="/featured">
+          <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
+            Featured Page – Coming Soon
+          </div>
+        </Route>
 
+        <Route path="/products">
+          <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
+            All Products – Coming Soon
+          </div>
+        </Route>
 
-<Route path="/featured">
-  <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
-    Featured Page – Coming Soon 
-  </div>
-</Route>
-
-<Route path="/products">
-  <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
-    All Products – Coming Soon
-  </div>
-</Route>
-
-{/* Footer linkleri */}
-<Route path="/about-us">
+        {/* Footer Link Sayfaları */}
+        <Route path="/about-us">
           <div className="text-center text-2xl mt-20">About Us Page</div>
         </Route>
         <Route path="/carrier">
@@ -117,12 +133,12 @@ function App() {
         <Route path="/api">
           <div className="text-center text-2xl mt-20">API Page</div>
         </Route>
-
-
       </Switch>
+
       <Footer />
     </>
   );
 }
+
 
 export default App;
