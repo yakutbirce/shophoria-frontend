@@ -3,6 +3,8 @@ import Breadcrumb from "../Shop/Breadcrumb";
 import Clients from "../Clients";
 import Footer from "../Footer/Footer";
 import ProductDetailContent from "./ProductDetailContent";
+import ProductDescriptionSection from "./ProductDescriptionSection";
+import BestsellerProducts from "./BestsellerProducts";
 
 const ProductDetailPage = () => {
   return (
@@ -14,7 +16,8 @@ const ProductDetailPage = () => {
 
      {/* Ana içerik: Slider + Info */}
 <ProductDetailContent />
-
+<ProductDescriptionSection  />
+<BestsellerProducts />  
       {/* Clients*/}
       <Clients />
    

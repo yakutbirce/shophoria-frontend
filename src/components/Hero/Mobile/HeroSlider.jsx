@@ -48,7 +48,7 @@ const HeroSlider = () => {
               {slide.description}
             </p>
             <Link to="/shop">
-  <button className="px-10 py-4 mt-4 text-2xl font-bold text-white bg-sky-500 rounded-md">
+  <button className=" px-10 py-4 mt-4 text-2xl font-bold text-white bg-sky-500 rounded-md">
     SHOP NOW
   </button>
 </Link>
