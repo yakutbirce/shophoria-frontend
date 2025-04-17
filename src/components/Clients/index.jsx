@@ -10,7 +10,7 @@ const Clients = () => {
         <MobileClients />
       </div>
       {/* Desktop: md ve üzeri */}
-      <div className="hidden md:block">
+      <div className="hidden md:block bg-white">
         <DesktopClients />
       </div>
     </>
