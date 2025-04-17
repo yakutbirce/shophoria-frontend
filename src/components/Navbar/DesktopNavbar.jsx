@@ -13,7 +13,8 @@ import {
 
 const DesktopNavbar = () => {
   return (
-    <div className="w-full">
+    <div className="w-full ">
+      {/* Arka Plan Rengi */}
       {/* Üst Bar */}
       <div className="w-full bg-[#252B42] text-white text-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-2 px-4">

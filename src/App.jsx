@@ -17,6 +17,7 @@ import ShopPage from './components/Shop/ShopPage';
 import ShopMobileNavbar from "./components/Navbar/ShopMobileNavbar";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import ProductDetailPage from "./components/ProductDetail/ProductDetailPage";
+import ScrollToTopButton from "./components/ScrollToTopButton";
 
 
 function App() {
@@ -136,7 +137,7 @@ function App() {
           <div className="text-center text-2xl mt-20">API Page</div>
         </Route>
       </Switch>
-
+<ScrollToTopButton />
       <Footer />
     </>
   );
