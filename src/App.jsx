@@ -18,20 +18,30 @@ import ShopMobileNavbar from "./components/Navbar/ShopMobileNavbar";
 import DesktopNavbar from "./components/Navbar/DesktopNavbar";
 import ProductDetailPage from "./components/ProductDetail/ProductDetailPage";
 import ScrollToTopButton from "./components/ScrollToTopButton";
+import ContactPage from "./components/Contact/ContactPage";
+import ContactUsPage from "./components/Contact/ContactUsPage";
 
 
 function App() {
   const location = useLocation();
 
-  // Shop benzeri sayfalar için koşul (hem /shop hem /product/:id)
   const isShopLayout =
-    location.pathname.startsWith("/shop") ||
-    location.pathname.startsWith("/product");
+  location.pathname.startsWith("/shop") ||
+  location.pathname.startsWith("/product");
+
+  const isContactPage = location.pathname === "/contact";
+
+
+
 
   return (
     <>
       {/* Koşullu Global Navbar */}
-      {!isShopLayout && <Navbar />}
+      {!isShopLayout && !isContactPage && <Navbar />}
+
+     
+
+
 
       <Switch>
         {/* Anasayfa */}
@@ -99,6 +109,15 @@ function App() {
           </div>
         </Route>
 
+        <Route path="/contact">
+  <ContactPage />
+</Route>
+
+<Route path="/contactus">
+  <ContactUsPage />
+</Route>
+
+
         {/* Footer Link Sayfaları */}
         <Route path="/about-us">
           <div className="text-center text-2xl mt-20">About Us Page</div>
@@ -137,8 +156,8 @@ function App() {
           <div className="text-center text-2xl mt-20">API Page</div>
         </Route>
       </Switch>
-<ScrollToTopButton />
-      <Footer />
+      {!isContactPage && <ScrollToTopButton />}
+{!isContactPage && <Footer />}
     </>
   );
 }
