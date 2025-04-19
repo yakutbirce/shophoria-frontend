@@ -98,7 +98,7 @@ const DesktopNavbar = () => {
 
           {/* Sağ: Login/Register ve İkonlar */}
           <div className="flex items-center space-x-4">
-            <a href="/login" className="text-blue-500 hover:underline">
+            <a href="/login-register" className="text-blue-500 hover:underline">
               Login / Register
             </a>
             <button aria-label="Search" className="focus:outline-none">

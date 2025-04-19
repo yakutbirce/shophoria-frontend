@@ -54,7 +54,7 @@ const ShopMobileNavbar = () => {
 
         {/* Alt ikonlar */}
         <div className="flex flex-col gap-4 py-6 border-t border-neutral-200 items-center">
-          <Link to="/login" className="flex items-center gap-2 text-[#23A6F0] font-medium">
+          <Link to="/login-register" className="flex items-center gap-2 text-[#23A6F0] font-medium">
             <User size={20} /> Login / Register
           </Link>
           <Link to="/search" className="flex items-center gap-2 text-[#23A6F0]">

@@ -20,7 +20,7 @@ const MobileNavbar = () => {
 
         {/* Sağ taraf: İkonlar */}
         <div className="flex items-center gap-4">
-          <Link to="/login" aria-label="User" className="focus:outline-none">
+          <Link to="/login-register" aria-label="User" className="focus:outline-none">
             <User size={24} />
           </Link>
           <Link to="/search" aria-label="Search" className="focus:outline-none">

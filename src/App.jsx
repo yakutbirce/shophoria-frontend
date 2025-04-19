@@ -20,6 +20,7 @@ import ProductDetailPage from "./components/ProductDetail/ProductDetailPage";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import ContactPage from "./components/Contact/ContactPage";
 import ContactUsPage from "./components/Contact/ContactUsPage";
+import LoginRegisterPage from "./pages/LoginRegisterPage";
 
 
 function App() {
@@ -56,9 +57,11 @@ function App() {
         </Route>
 
         {/* Login */}
-        <Route path="/login">
-          <div className="text-center text-2xl mt-20">Login Page</div>
-        </Route>
+        <Route path="/login-register">
+  <LoginRegisterPage />
+</Route>
+
+
 
         {/* Search */}
         <Route path="/search">
