@@ -1,4 +1,7 @@
 import React from "react";
+import { useSelector } from "react-redux";
+import Gravatar from "react-gravatar";
+
 import {
   Phone,
   Mail,
@@ -12,6 +15,8 @@ import {
 } from "lucide-react";
 
 const DesktopNavbar = () => {
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   return (
     <div className="w-full ">
       {/* Arka Plan Rengi */}
@@ -96,14 +101,28 @@ const DesktopNavbar = () => {
             </a>
           </nav>
 
-          {/* Sağ: Login/Register ve İkonlar */}
-          <div className="flex items-center space-x-4">
-            <a href="/login-register" className="text-blue-500 hover:underline">
-              Login / Register
-            </a>
-            <button aria-label="Search" className="focus:outline-none">
-              <Search size={20} />
-            </button>
+        {/* Sağ: Login/Register ve İkonlar */}
+<div className="flex items-center space-x-4">
+{userInfo && (
+  <div className="flex items-center gap-2">
+    <Gravatar
+      email={userInfo.email}
+      className="rounded-full w-6 h-6"
+      default="mp"
+    />
+    <span className="text-sm text-neutral-700 font-semibold">
+      Welcome, {userInfo.name || userInfo.email}
+    </span>
+  </div>
+)}
+
+  <a href="/login-register" className="text-blue-500 hover:underline">
+    Login / Register
+  </a>
+  <button aria-label="Search" className="focus:outline-none">
+    <Search size={20} />
+  </button>
+
             <button aria-label="Shopping Cart" className="focus:outline-none">
               <ShoppingCart size={20} />
             </button>

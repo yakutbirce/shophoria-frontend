@@ -22,9 +22,25 @@ import ContactPage from "./components/Contact/ContactPage";
 import ContactUsPage from "./components/Contact/ContactUsPage";
 import AuthChoicePage from "./pages/AuthChoicePage";
 import SignUp from "./components/Auth/SignUp";
+import Login from "./components/Auth/Login";
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./store/userSlice";
+
+
 
 
 function App() {
+
+  const dispatch = useDispatch();
+
+useEffect(() => {
+  const savedUser = localStorage.getItem("userInfo");
+  if (savedUser) {
+    dispatch(setUser(JSON.parse(savedUser)));
+  }
+}, [dispatch]);
+
   const location = useLocation();
 
   const isShopLayout =
@@ -62,7 +78,13 @@ function App() {
   <AuthChoicePage />
 </Route>
 
-{/* Gerçek Sign‑Up formu */}
+{/* Login formu */}
+<Route path="/login">
+  <Login />
+</Route>
+
+
+{/* Sign‑Up formu */}
 <Route path="/signup">
   <SignUp />
 </Route>

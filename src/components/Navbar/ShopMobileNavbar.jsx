@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import Gravatar from "react-gravatar";
+
 import { Link } from "react-router-dom";
 import {
   Menu,
@@ -18,6 +21,8 @@ const navLinks = [
 ];
 
 const ShopMobileNavbar = () => {
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -57,6 +62,20 @@ const ShopMobileNavbar = () => {
           <Link to="/login-register" className="flex items-center gap-2 text-[#23A6F0] font-medium">
             <User size={20} /> Login / Register
           </Link>
+          {userInfo && (
+  <div className="flex items-center gap-2">
+    <Gravatar
+      email={userInfo.email}
+      className="rounded-full w-6 h-6"
+      default="mp"
+    />
+    <span className="text-sm text-neutral-700 font-semibold">
+      Welcome, {userInfo.name || userInfo.email}
+    </span>
+  </div>
+)}
+
+
           <Link to="/search" className="flex items-center gap-2 text-[#23A6F0]">
             <Search size={20} /> 
           </Link>

@@ -1,9 +1,14 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import Gravatar from "react-gravatar";
+
 import { User, Search, ShoppingCart, Menu } from "lucide-react";
 import NavLinks from "../common/NavLinks";
 import { Link } from "react-router-dom";
 
 const MobileNavbar = () => {
+  const userInfo = useSelector((state) => state.user.userInfo);
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -23,6 +28,20 @@ const MobileNavbar = () => {
           <Link to="/login-register" aria-label="User" className="focus:outline-none">
             <User size={24} />
           </Link>
+          {userInfo && (
+  <div className="flex items-center gap-2">
+    <Gravatar
+      email={userInfo.email}
+      className="rounded-full w-6 h-6"
+      default="mp"
+    />
+    <span className="text-sm text-neutral-700 font-semibold">
+      Welcome, {userInfo.name || userInfo.email}
+    </span>
+  </div>
+)}
+
+
           <Link to="/search" aria-label="Search" className="focus:outline-none">
             <Search size={24} />
           </Link>
