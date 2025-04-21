@@ -1,6 +1,6 @@
 import React from "react";
-
-
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { useLocation ,Switch, Route } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -20,7 +20,8 @@ import ProductDetailPage from "./components/ProductDetail/ProductDetailPage";
 import ScrollToTopButton from "./components/ScrollToTopButton";
 import ContactPage from "./components/Contact/ContactPage";
 import ContactUsPage from "./components/Contact/ContactUsPage";
-import LoginRegisterPage from "./pages/LoginRegisterPage";
+import AuthChoicePage from "./pages/AuthChoicePage";
+import SignUp from "./components/Auth/SignUp";
 
 
 function App() {
@@ -56,10 +57,16 @@ function App() {
           <BlogSection />
         </Route>
 
-        {/* Login */}
-        <Route path="/login-register">
-  <LoginRegisterPage />
+       {/* Login / Sign‑Up seçimi */}
+<Route path="/login-register">
+  <AuthChoicePage />
 </Route>
+
+{/* Gerçek Sign‑Up formu */}
+<Route path="/signup">
+  <SignUp />
+</Route>
+
 
 
 
@@ -160,10 +167,13 @@ function App() {
         </Route>
       </Switch>
       {!isContactPage && <ScrollToTopButton />}
-{!isContactPage && <Footer />}
+      {!isContactPage && <Footer />}
+
+      <ToastContainer position="top-right" autoClose={3000} />
     </>
   );
 }
+
 
 
 export default App;
