@@ -17,7 +17,7 @@ const navLinks = [
   { name: "About", path: "/about" },
   { name: "Blog", path: "/blog" },
   { name: "Contact", path: "/contact" },
-  { name: "Pages", path: "/pages" },
+  { name: "Team", path: "/team" },
 ];
 
 const ShopMobileNavbar = () => {

@@ -23,6 +23,8 @@ import ContactUsPage from "./components/Contact/ContactUsPage";
 import AuthChoicePage from "./pages/AuthChoicePage";
 import SignUp from "./components/Auth/SignUp";
 import Login from "./components/Auth/Login";
+import TeamPage from "./components/Team/TeamPage";
+
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/userSlice";
@@ -148,6 +150,11 @@ useEffect(() => {
 <Route path="/contactus">
   <ContactUsPage />
 </Route>
+
+<Route path="/team">
+  <TeamPage />
+</Route>
+
 
 
         {/* Footer Link Sayfaları */}

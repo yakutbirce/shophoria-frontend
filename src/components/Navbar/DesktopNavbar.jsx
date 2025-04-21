@@ -94,10 +94,10 @@ const DesktopNavbar = () => {
               Contact
             </a>
             <a
-              href="/pages"
+              href="/team"
               className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
             >
-              Pages
+              Team
             </a>
           </nav>
 
