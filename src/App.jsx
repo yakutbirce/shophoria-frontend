@@ -27,8 +27,9 @@ import TeamPage from "./components/Team/TeamPage";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { setUser } from "./store/userSlice";
+import { autoLogin, setUser } from "./store/userSlice";
 import AboutPage from "./components/About/AboutPage";
+
 
 
 
@@ -47,6 +48,14 @@ useEffect(() => {
     dispatch(setUser(JSON.parse(savedUser)));
   }
 }, [dispatch]);
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    dispatch(autoLogin(token));
+  }
+}, [dispatch]);
+
 
   const location = useLocation();
 
