@@ -33,7 +33,11 @@ import AboutPage from "./components/About/AboutPage";
 
 
 
+
+
 function App() {
+
+
 
   const dispatch = useDispatch();
 
@@ -201,6 +205,7 @@ useEffect(() => {
           <div className="text-center text-2xl mt-20">API Page</div>
         </Route>
       </Switch>
+
       {!isContactPage && <ScrollToTopButton />}
       {!isContactPage && <Footer />}
 
