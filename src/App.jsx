@@ -28,6 +28,7 @@ import TeamPage from "./components/Team/TeamPage";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { setUser } from "./store/userSlice";
+import AboutPage from "./components/About/AboutPage";
 
 
 
@@ -151,6 +152,11 @@ useEffect(() => {
   <ContactUsPage />
 </Route>
 
+<Route path="/about">
+  <AboutPage />
+</Route>
+
+
 <Route path="/team">
   <TeamPage />
 </Route>
@@ -159,7 +165,7 @@ useEffect(() => {
 
         {/* Footer Link Sayfaları */}
         <Route path="/about-us">
-          <div className="text-center text-2xl mt-20">About Us Page</div>
+          <AboutPage/>
         </Route>
         <Route path="/carrier">
           <div className="text-center text-2xl mt-20">Career Page</div>
