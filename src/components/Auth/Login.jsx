@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { useDispatch } from "react-redux";
 import { loginThunk } from "../../store/userSlice";
+import axiosInstance from "../../services/axiosInstance";
 
 const questions = [
   {
@@ -73,12 +74,17 @@ const Login = () => {
     try {
       const resultAction = await dispatch(loginThunk(data));
   
-
-      console.log("Gelen payload:", resultAction.payload);
-  
       if (loginThunk.fulfilled.match(resultAction)) {
-        if (rememberMe && resultAction.payload.token) {
-          localStorage.setItem("token", resultAction.payload.token);
+        const token = resultAction.payload.token;
+  
+        //  Her durumda header’a token koy
+        axiosInstance.defaults.headers.common["Authorization"] = token;
+  
+        //  Sadece Remember Me işaretliyse localStoragea yaz, değilse sil
+        if (rememberMe) {
+          localStorage.setItem("token", token);
+        } else {
+          localStorage.removeItem("token");
         }
   
         toast.success("Login successful!");
