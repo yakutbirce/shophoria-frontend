@@ -70,7 +70,10 @@ export const fetchProducts = (categoryId) => async (dispatch) => {
   try {
     const endpoint = categoryId ? `/products?categoryId=${categoryId}` : `/products`;
     const { data } = await axiosInstance.get(endpoint);
+
+    // Hem ürünleri hem toplam sayıyı kaydet
     dispatch(setProductList(data.products));
+    dispatch(setTotal(data.total)); 
     dispatch(setFetchState("FETCHED"));
   } catch (error) {
     dispatch(setFetchState("FAILED"));

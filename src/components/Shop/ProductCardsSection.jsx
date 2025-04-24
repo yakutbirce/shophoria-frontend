@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/reducers/productReducer";
 import { Link, useParams } from "react-router-dom";
+import Spinner from "../common/Spinner";
 
 // Ürün Kartı
 const ProductCard = ({ product }) => {
@@ -63,12 +64,25 @@ const ProductCardsSection = ({ currentPage }) => {
   }
 
   if (fetchState === "FETCHING") {
-    return <div className="text-center py-12">Yükleniyor...</div>;
+    return <Spinner />;
   }
 
   if (fetchState === "FAILED") {
-    return <div className="text-center text-red-500 py-12">Bir hata oluştu!</div>;
+    return (
+      <div className="text-center py-12">
+        <p className="text-red-600 font-semibold text-lg mb-4">
+          Ürünler yüklenemedi. Lütfen daha sonra tekrar deneyin.
+        </p>
+        <button
+          onClick={() => dispatch(fetchProducts())}
+          className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
+        >
+          Yeniden Dene
+        </button>
+      </div>
+    );
   }
+  
 
   const productsPerPage = 12;
   const startIndex = (currentPage - 1) * productsPerPage;

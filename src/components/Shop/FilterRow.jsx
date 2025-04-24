@@ -1,14 +1,17 @@
 import React from "react";
+import { useSelector } from "react-redux";
 import { LayoutGrid, List } from "lucide-react";
 
 const FilterRow = () => {
+
+  const total = useSelector((state) => state.product.total);
   return (
     <section className="w-full py-6 bg-white">
     <div className="max-w-[1050px] mx-auto w-full px-4 md:px-6 flex flex-col md:flex-row justify-between items-center gap-6 md:gap-0">
       
       {/* Sol */}
       <div className="text-sm font-semibold text-neutral-500 text-center md:text-left">
-        Showing all 12 results
+      Showing all {total} results
       </div>
   
       {/* Orta */}
