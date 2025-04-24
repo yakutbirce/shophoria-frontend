@@ -1,3 +1,5 @@
+import axiosInstance from "../../services/axiosInstance";
+
 // Action Types
 const SET_CATEGORIES = "SET_CATEGORIES";
 const SET_PRODUCT_LIST = "SET_PRODUCT_LIST";
@@ -12,7 +14,7 @@ const initialState = {
   categories: [],
   productList: [],
   total: 0,
-  fetchState: "NOT_FETCHED", // "NOT_FETCHED", "FETCHING", "FETCHED", "FAILED"
+  fetchState: "NOT_FETCHED",
   limit: 25,
   offset: 0,
   filter: "",
@@ -24,6 +26,7 @@ const productReducer = (state = initialState, action) => {
     case SET_CATEGORIES:
       return { ...state, categories: action.payload };
     case SET_PRODUCT_LIST:
+      console.log("SET_PRODUCT_LIST reducer'a gelen ürünler:", action.payload);
       return { ...state, productList: action.payload };
     case SET_TOTAL:
       return { ...state, total: action.payload };
@@ -50,3 +53,28 @@ export const setFetchState = (state) => ({ type: SET_FETCH_STATE, payload: state
 export const setLimit = (limit) => ({ type: SET_LIMIT, payload: limit });
 export const setOffset = (offset) => ({ type: SET_OFFSET, payload: offset });
 export const setFilter = (filter) => ({ type: SET_FILTER, payload: filter });
+
+// Thunk: Kategorileri çek
+export const fetchCategories = () => async (dispatch) => {
+  try {
+    const { data } = await axiosInstance.get("/categories");
+    dispatch(setCategories(data));
+  } catch (error) {
+    console.error("Could not fetch categories:", error);
+  }
+};
+
+// Thunk: Ürünleri çek
+export const fetchProducts = (categoryId) => async (dispatch) => {
+  dispatch(setFetchState("FETCHING"));
+  try {
+    const endpoint = categoryId ? `/products?categoryId=${categoryId}` : `/products`;
+    const { data } = await axiosInstance.get(endpoint);
+    dispatch(setProductList(data.products));
+    dispatch(setFetchState("FETCHED"));
+  } catch (error) {
+    dispatch(setFetchState("FAILED"));
+    console.error("Could not fetch products:", error);
+  }
+};
+

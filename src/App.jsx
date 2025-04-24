@@ -30,6 +30,7 @@ import { useDispatch } from "react-redux";
 import { autoLogin, setUser } from "./store/userSlice";
 import AboutPage from "./components/About/AboutPage";
 
+import { fetchCategories } from "./store/reducers/categoryReducer";
 
 
 
@@ -54,6 +55,10 @@ useEffect(() => {
   if (token) {
     dispatch(autoLogin(token));
   }
+}, [dispatch]);
+
+useEffect(() => {
+  dispatch(fetchCategories());
 }, [dispatch]);
 
 
@@ -119,17 +124,18 @@ useEffect(() => {
         </Route>
 
         {/* SHOP PAGE */}
-        <Route path="/shop">
-          <>
-            <div className="md:hidden">
-              <ShopMobileNavbar />
-            </div>
-            <div className="hidden md:block">
-              <DesktopNavbar />
-            </div>
-            <ShopPage />
-          </>
-        </Route>
+        <Route path="/shop/:gender/:categoryName/:categoryId">
+  <>
+    <div className="md:hidden">
+      <ShopMobileNavbar />
+    </div>
+    <div className="hidden md:block">
+      <DesktopNavbar />
+    </div>
+    <ShopPage />
+  </>
+</Route>
+
 
         {/* PRODUCT DETAIL PAGE */}
         <Route path="/product/:id">

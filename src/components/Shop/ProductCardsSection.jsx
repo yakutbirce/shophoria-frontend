@@ -1,51 +1,86 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../../store/reducers/productReducer";
+import { Link, useParams } from "react-router-dom";
 
 // Ürün Kartı
-const ProductCard = () => {
+const ProductCard = ({ product }) => {
   return (
     <div className="flex flex-col items-center gap-3 px-2 md:px-4 mb-14">
-      {/* Görsel Placeholder */}
-      <div className="w-full aspect-[348/427] md:aspect-[239/300] max-w-[348px] md:max-w-[239px] bg-gray-300" />
+      <div className="w-full aspect-[348/427] md:aspect-[239/300] max-w-[348px] md:max-w-[239px] bg-gray-300 overflow-hidden">
+        <img
+          src={product.images?.[0]?.url}
+          alt={product.name}
+          className="w-full h-full object-cover"
+        />
+      </div>
 
-      {/* Başlıklar */}
       <div className="text-center">
-        <h3 className="text-base font-semibold text-gray-900">Graphic Design</h3>
-        <p className="text-sm text-gray-500">English Department</p>
+        <h3 className="text-base font-semibold text-gray-900">{product.name}</h3>
+        <p className="text-sm text-gray-500">{product.description}</p>
       </div>
 
-      {/* Fiyat */}
       <div className="flex gap-2 items-center">
-        <span className="text-gray-400 line-through text-sm">$16.48</span>
-        <span className="text-green-600 font-semibold text-sm">$6.48</span>
+        {product.oldPrice && (
+          <span className="text-gray-400 line-through text-sm">
+            ${product.oldPrice}
+          </span>
+        )}
+        <span className="text-green-600 font-semibold text-sm">
+          ${product.price}
+        </span>
       </div>
 
-      {/* Renk Daireleri */}
-      <div className="flex gap-2">
-        <span className="w-3 h-3 rounded-full bg-cyan-500" />
-        <span className="w-3 h-3 rounded-full bg-green-600" />
-        <span className="w-3 h-3 rounded-full bg-orange-500" />
-        <span className="w-3 h-3 rounded-full bg-slate-800" />
-      </div>
+      {product.colors?.length > 0 && (
+        <div className="flex gap-2">
+          {product.colors.map((color, i) => (
+            <span
+              key={i}
+              className="w-3 h-3 rounded-full"
+              style={{ backgroundColor: color }}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
 
-// Kartları Listeleyen Ana Bileşen
 const ProductCardsSection = ({ currentPage }) => {
-  const allProducts = Array.from({ length: 36 }); // Simülasyon: 36 ürün var
-  const productsPerPage = 12;
+  const dispatch = useDispatch();
+  const { categoryId } = useParams();
 
+  useEffect(() => {
+    dispatch(fetchProducts(categoryId));
+  }, [dispatch, categoryId]);
+
+  const productList = useSelector((s) => s.product.productList);
+  const fetchState = useSelector((s) => s.product.fetchState);
+
+  if (!Array.isArray(productList)) {
+    console.warn("productList bir array değil!", productList);
+    return null;
+  }
+
+  if (fetchState === "FETCHING") {
+    return <div className="text-center py-12">Yükleniyor...</div>;
+  }
+
+  if (fetchState === "FAILED") {
+    return <div className="text-center text-red-500 py-12">Bir hata oluştu!</div>;
+  }
+
+  const productsPerPage = 12;
   const startIndex = (currentPage - 1) * productsPerPage;
-  const currentProducts = allProducts.slice(startIndex, startIndex + productsPerPage);
+  const currentProducts = productList.slice(startIndex, startIndex + productsPerPage);
 
   return (
     <section className="flex flex-col items-center px-4 py-10 bg-white">
       <div className="flex flex-wrap justify-start max-w-[1300px]">
-        {currentProducts.map((_, i) => (
-          <div key={i} className="w-full md:w-1/4">
-            <Link to={`/product/${i + 1}`} className="block hover:cursor-pointer">
-              <ProductCard />
+        {currentProducts.map((product) => (
+          <div key={product.id} className="w-full md:w-1/4">
+            <Link to={`/product/${product.id}`} className="block hover:cursor-pointer">
+              <ProductCard product={product} />
             </Link>
           </div>
         ))}

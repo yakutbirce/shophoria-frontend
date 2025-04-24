@@ -1,5 +1,7 @@
-import React from "react";
+
+import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import Gravatar from "react-gravatar";
 
 import {
@@ -12,18 +14,36 @@ import {
   Search,
   ShoppingCart,
   Heart,
+  ChevronDown,
 } from "lucide-react";
 
 const DesktopNavbar = () => {
-  const userInfo = useSelector((state) => state.user.userInfo);
+
+  const [open, setOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (open && dropdownRef.current && !dropdownRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [open]);
+
+  const userInfo = useSelector((s) => s.user.userInfo);
+  const categories = useSelector((s) => s.category.categories || []);
+  console.log("Categories from Redux:", categories);
+  const women = categories.filter((c) => c.gender === "k");
+  const men = categories.filter((c) => c.gender === "e");
+
 
   return (
-    <div className="w-full ">
-      {/* Arka Plan Rengi */}
+    <div className="w-full">
       {/* Üst Bar */}
       <div className="w-full bg-[#252B42] text-white text-sm">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-2 px-4">
-          {/* Sol: Telefon ve E-posta */}
           <div className="flex items-center space-x-6">
             <div className="flex items-center space-x-1">
               <Phone size={16} />
@@ -34,13 +54,9 @@ const DesktopNavbar = () => {
               <span>mikelewai@example.com</span>
             </div>
           </div>
-
-          {/* Orta: Metin */}
           <div>
             <span>Follow Us and get a chance to win 80% off</span>
           </div>
-
-          {/* Sağ: Sosyal Medya */}
           <div className="flex items-center space-x-2">
             <span>Follow Us:</span>
             <Instagram size={16} />
@@ -51,84 +67,100 @@ const DesktopNavbar = () => {
         </div>
       </div>
 
-      {/* Alt Bar */}
-      <div className="w-full bg-white text-black shadow">
+   {/* Alt Bar */}
+   <div className="w-full bg-white text-black shadow">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4">
-          {/* Sol: Logo */}
           <div className="text-2xl font-bold">Bandage</div>
 
-          {/* Orta: Menü Linkleri */}
-          <nav className="flex gap-8">
-            <a
-              href="/"
-              className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
-            >
+          <nav className="flex gap-8 items-center">
+            <Link to="/" className="text-lg text-neutral-600 hover:text-neutral-800">
               Home
-            </a>
-            <a
-  href="/shop"
-  className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors flex items-center gap-1"
->
-  Shop
-  {/* Aşağı Ok İkonu */}
-  <svg width="16" height="16" viewBox="0 0 24 24">
-    <path fill="currentColor" d="M7 10l5 5 5-5z" />
-  </svg>
-</a>
-            <a
-              href="/about"
-              className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
-            >
+            </Link>
+
+            {/* Shop dropdown */}
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setOpen((o) => !o)}
+                className="flex items-center gap-1 text-lg text-neutral-600 hover:text-neutral-800"
+              >
+                Shop <ChevronDown size={16} />
+              </button>
+
+              {open && (
+                <div className="absolute top-full left-0 mt-2 bg-white shadow-lg rounded p-4 w-64 grid grid-cols-2 gap-4 z-50">
+                  {/* Kadın */}
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Kadın</h4>
+                    <ul className="space-y-1">
+                      {women.map((c) => {
+                        const slug = c.code.split(":")[1];
+                        return (
+                          <li key={c.id}>
+                            <Link
+                              to={`/shop/${c.gender}/${slug}/${c.id}`}
+                              className="text-sm hover:text-blue-600"
+                            >
+                              {c.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                  {/* Erkek */}
+                  <div>
+                    <h4 className="text-sm font-semibold mb-2">Erkek</h4>
+                    <ul className="space-y-1">
+                      {men.map((c) => {
+                        const slug = c.code.split(":")[1];
+                        return (
+                          <li key={c.id}>
+                            <Link
+                              to={`/shop/${c.gender}/${slug}/${c.id}`}
+                              className="text-sm hover:text-blue-600"
+                            >
+                              {c.title}
+                            </Link>
+                          </li>
+                        );
+                      })}
+                    </ul>
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Diğer linkler */}
+            <Link to="/about" className="text-lg text-neutral-600 hover:text-neutral-800">
               About
-            </a>
-            <a
-              href="/blog"
-              className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
-            >
+            </Link>
+            <Link to="/blog" className="text-lg text-neutral-600 hover:text-neutral-800">
               Blog
-            </a>
-            <a
-              href="/contact"
-              className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
-            >
+            </Link>
+            <Link to="/contact" className="text-lg text-neutral-600 hover:text-neutral-800">
               Contact
-            </a>
-            <a
-              href="/team"
-              className="text-lg text-neutral-600 hover:text-neutral-800 transition-colors"
-            >
+            </Link>
+            <Link to="/team" className="text-lg text-neutral-600 hover:text-neutral-800">
               Team
-            </a>
+            </Link>
           </nav>
 
-        {/* Sağ: Login/Register ve İkonlar */}
-<div className="flex items-center space-x-4">
-{userInfo && (
-  <div className="flex items-center gap-2">
-    <Gravatar
-      email={userInfo.email}
-      className="rounded-full w-6 h-6"
-      default="mp"
-    />
-    <span className="text-sm text-neutral-700 font-semibold">
-      Welcome, {userInfo.name || userInfo.email}
-    </span>
-  </div>
-)}
-
-  <a href="/login-register" className="text-blue-500 hover:underline">
-    Login / Register
-  </a>
-  <button aria-label="Search" className="focus:outline-none">
-    <Search size={20} />
-  </button>
-
-            <button aria-label="Shopping Cart" className="focus:outline-none">
-              <ShoppingCart size={20} />
-            </button>
-            <button aria-label="Wishlist" className="focus:outline-none">
-              <Heart size={20} />
-            </button>
+          {/* Sağ taraf: kullanıcı + ikonlar */}
+          <div className="flex items-center space-x-4">
+            {userInfo && (
+              <div className="flex items-center gap-2">
+                <Gravatar email={userInfo.email} className="rounded-full w-6 h-6" default="mp" />
+                <span className="text-sm text-neutral-700 font-semibold">
+                  Welcome, {userInfo.name || userInfo.email}
+                </span>
+              </div>
+            )}
+            <Link to="/login-register" className="text-blue-500 hover:underline">
+              Login / Register
+            </Link>
+            <button aria-label="Search"><Search size={20} /></button>
+            <button aria-label="Shopping Cart"><ShoppingCart size={20} /></button>
+            <button aria-label="Wishlist"><Heart size={20} /></button>
           </div>
         </div>
       </div>
