@@ -18,6 +18,7 @@ const initialState = {
   limit: 25,
   offset: 0,
   filter: "",
+  sort: "",
 };
 
 // Reducer
@@ -38,6 +39,9 @@ const productReducer = (state = initialState, action) => {
       return { ...state, offset: action.payload };
     case SET_FILTER:
       return { ...state, filter: action.payload };
+      case "SET_SORT":
+  return { ...state, sort: action.payload };
+
     default:
       return state;
   }
@@ -53,6 +57,8 @@ export const setFetchState = (state) => ({ type: SET_FETCH_STATE, payload: state
 export const setLimit = (limit) => ({ type: SET_LIMIT, payload: limit });
 export const setOffset = (offset) => ({ type: SET_OFFSET, payload: offset });
 export const setFilter = (filter) => ({ type: SET_FILTER, payload: filter });
+export const setSort = (sort) => ({ type: "SET_SORT", payload: sort });
+
 
 // Thunk: Kategorileri çek
 export const fetchCategories = () => async (dispatch) => {
@@ -65,19 +71,34 @@ export const fetchCategories = () => async (dispatch) => {
 };
 
 // Thunk: Ürünleri çek
-export const fetchProducts = (categoryId) => async (dispatch) => {
+export const fetchProducts = ({ categoryId, sort, filter, limit, offset } = {}) => async (dispatch) => {
   dispatch(setFetchState("FETCHING"));
+  
   try {
-    const endpoint = categoryId ? `/products?categoryId=${categoryId}` : `/products`;
-    const { data } = await axiosInstance.get(endpoint);
+    const params = new URLSearchParams();
+    if (categoryId) params.append("category", categoryId);
+    if (sort) params.append("sort", sort);
+    if (filter) params.append("filter", filter);
+    if (limit) params.append("limit", limit);
+    if (offset) params.append("offset", offset);
 
-    // Hem ürünleri hem toplam sayıyı kaydet
+    const queryString = params.toString();
+    const endpoint = queryString ? `/products?${queryString}` : "/products";
+
+    const { data } = await axiosInstance.get(endpoint);
     dispatch(setProductList(data.products));
-    dispatch(setTotal(data.total)); 
+    dispatch(setTotal(data.total));
     dispatch(setFetchState("FETCHED"));
   } catch (error) {
     dispatch(setFetchState("FAILED"));
     console.error("Could not fetch products:", error);
   }
 };
+
+
+
+
+
+
+
 

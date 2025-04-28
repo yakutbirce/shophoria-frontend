@@ -5,10 +5,14 @@ import FilterRow from "./FilterRow";
 import ProductCardsSection from "./ProductCardsSection";
 import Pagination from "./Pagination";
 import Clients from "../Clients";
+import { useParams } from "react-router-dom";
 
 
 
 const ShopPage = () => {
+
+  const { categoryId } = useParams();
+
   const [currentPage, setCurrentPage] = useState(1);
   const totalPages = 3;
 
@@ -26,7 +30,8 @@ const ShopPage = () => {
       </div>
 
       <FilterRow />
-      <ProductCardsSection currentPage={currentPage} />
+      <ProductCardsSection key={categoryId} currentPage={currentPage} />
+
       <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
       <Clients />
     </section>

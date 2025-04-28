@@ -1,8 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/reducers/productReducer";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../common/Spinner";
+import Pagination from "../Shop/Pagination"; 
 
 // Ürün Kartı
 const ProductCard = ({ product }) => {
@@ -47,16 +49,26 @@ const ProductCard = ({ product }) => {
   );
 };
 
-const ProductCardsSection = ({ currentPage }) => {
+const ProductCardsSection = () => {
   const dispatch = useDispatch();
-  const { categoryId } = useParams();
-
-  useEffect(() => {
-    dispatch(fetchProducts(categoryId));
-  }, [dispatch, categoryId]);
-
+  const { categoryId, gender } = useParams();
+  const sort = useSelector((s) => s.product.sort);
+  const filter = useSelector((s) => s.product.filter);
   const productList = useSelector((s) => s.product.productList);
   const fetchState = useSelector((s) => s.product.fetchState);
+  const total = useSelector((s) => s.product.total);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const productsPerPage = 12;
+
+  useEffect(() => {
+    const offset = (currentPage - 1) * productsPerPage;
+    dispatch(fetchProducts({ categoryId, sort, filter, gender, limit: productsPerPage, offset }));
+  }, [dispatch, categoryId, sort, filter, gender, currentPage]);
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+  };
 
   if (!Array.isArray(productList)) {
     console.warn("productList bir array değil!", productList);
@@ -74,7 +86,10 @@ const ProductCardsSection = ({ currentPage }) => {
           Ürünler yüklenemedi. Lütfen daha sonra tekrar deneyin.
         </p>
         <button
-          onClick={() => dispatch(fetchProducts())}
+          onClick={() => {
+            const offset = (currentPage - 1) * productsPerPage;
+            dispatch(fetchProducts({ categoryId, sort, filter, gender, limit: productsPerPage, offset }));
+          }}
           className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 transition"
         >
           Yeniden Dene
@@ -82,16 +97,13 @@ const ProductCardsSection = ({ currentPage }) => {
       </div>
     );
   }
-  
 
-  const productsPerPage = 12;
-  const startIndex = (currentPage - 1) * productsPerPage;
-  const currentProducts = productList.slice(startIndex, startIndex + productsPerPage);
+  const totalPages = Math.ceil(total / productsPerPage);
 
   return (
     <section className="flex flex-col items-center px-4 py-10 bg-white">
       <div className="flex flex-wrap justify-start max-w-[1300px]">
-        {currentProducts.map((product) => (
+        {productList.map((product) => (
           <div key={product.id} className="w-full md:w-1/4">
             <Link to={`/product/${product.id}`} className="block hover:cursor-pointer">
               <ProductCard product={product} />
@@ -99,6 +111,15 @@ const ProductCardsSection = ({ currentPage }) => {
           </div>
         ))}
       </div>
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={handlePageChange}
+        />
+      )}
     </section>
   );
 };

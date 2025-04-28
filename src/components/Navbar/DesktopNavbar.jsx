@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom"; 
 import Gravatar from "react-gravatar";
-
 import {
   Phone,
   Mail,
@@ -18,10 +16,9 @@ import {
 } from "lucide-react";
 
 const DesktopNavbar = () => {
-
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef(null);
-
+  const history = useHistory(); 
   useEffect(() => {
     const handleClickOutside = (e) => {
       if (open && dropdownRef.current && !dropdownRef.current.contains(e.target)) {
@@ -34,10 +31,8 @@ const DesktopNavbar = () => {
 
   const userInfo = useSelector((s) => s.user.userInfo);
   const categories = useSelector((s) => s.category.categories || []);
-  console.log("Categories from Redux:", categories);
   const women = categories.filter((c) => c.gender === "k");
   const men = categories.filter((c) => c.gender === "e");
-
 
   return (
     <div className="w-full">
@@ -67,8 +62,8 @@ const DesktopNavbar = () => {
         </div>
       </div>
 
-   {/* Alt Bar */}
-   <div className="w-full bg-white text-black shadow">
+      {/* Alt Bar */}
+      <div className="w-full bg-white text-black shadow">
         <div className="max-w-7xl mx-auto flex items-center justify-between py-4 px-4">
           <div className="text-2xl font-bold">Bandage</div>
 
@@ -80,8 +75,12 @@ const DesktopNavbar = () => {
             {/* Shop dropdown */}
             <div className="relative" ref={dropdownRef}>
               <button
-                onClick={() => setOpen((o) => !o)}
-                className="flex items-center gap-1 text-lg text-neutral-600 hover:text-neutral-800"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpen(true);
+                  history.push("/shop"); 
+                }}
+                className="flex items-center gap-1 text-lg text-neutral-600 hover:text-neutral-800 cursor-pointer"
               >
                 Shop <ChevronDown size={16} />
               </button>
@@ -130,7 +129,6 @@ const DesktopNavbar = () => {
               )}
             </div>
 
-            {/* Diğer linkler */}
             <Link to="/about" className="text-lg text-neutral-600 hover:text-neutral-800">
               About
             </Link>
