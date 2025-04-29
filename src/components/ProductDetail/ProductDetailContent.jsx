@@ -1,4 +1,8 @@
 import React, { useState, useRef } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../store/reducers/cartReducer";
+import { addProductToCart } from "../../hooks/utils/cartUtils";
+
 import Slider from "react-slick";
 import {
   Heart,
@@ -32,6 +36,18 @@ const SamplePrevArrow = ({ onClick }) => (
 
 const ProductDetailContent = ({ product }) => {
   const sliderRef = useRef(null);
+
+  const dispatch = useDispatch();
+  const cart = useSelector((state) => state.cart.cart);
+
+
+  const handleAddToCart = () => {
+    const updatedCart = addProductToCart(cart, product);
+    dispatch(setCart(updatedCart));
+  };
+  
+  
+
   const [selectedThumbIndex, setSelectedThumbIndex] = useState(0);
 
   const sliderSettings = {
@@ -162,9 +178,13 @@ const ProductDetailContent = ({ product }) => {
               <button className="w-10 h-10 flex items-center justify-center rounded-full border">
                 <Heart className="w-5 h-5 text-slate-700" />
               </button>
-              <button className="w-10 h-10 flex items-center justify-center rounded-full border">
-                <ShoppingCart className="w-5 h-5 text-slate-700" />
-              </button>
+              <button
+  onClick={handleAddToCart}
+  className="w-10 h-10 flex items-center justify-center rounded-full border"
+>
+  <ShoppingCart className="w-5 h-5 text-slate-700" />
+</button>
+
               <button className="w-10 h-10 flex items-center justify-center rounded-full border">
                 <Eye className="w-5 h-5 text-slate-700" />
               </button>

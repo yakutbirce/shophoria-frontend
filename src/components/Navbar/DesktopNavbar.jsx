@@ -14,6 +14,7 @@ import {
   Heart,
   ChevronDown,
 } from "lucide-react";
+import CartDropdown from "../Cart/CartDropDown";
 
 const DesktopNavbar = () => {
   const [open, setOpen] = useState(false);
@@ -157,7 +158,8 @@ const DesktopNavbar = () => {
               Login / Register
             </Link>
             <button aria-label="Search"><Search size={20} /></button>
-            <button aria-label="Shopping Cart"><ShoppingCart size={20} /></button>
+            <CartDropdown />
+
             <button aria-label="Wishlist"><Heart size={20} /></button>
           </div>
         </div>
