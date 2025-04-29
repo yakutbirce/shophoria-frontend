@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { X, Trash2, ShoppingCart } from "lucide-react";
-import { removeFromCart } from "../../store/reducers/cartReducer";
+import { removeProductCompletely } from "../../store/reducers/cartReducer";
 import { Link } from "react-router-dom";
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CartDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -12,6 +14,23 @@ const CartDropdown = () => {
   const totalPrice = cart.reduce((acc, item) => {
     return acc + item.product.price * item.count;
   }, 0);
+
+  const handleDelete = (product) => {
+    confirmAlert({
+      title: "Ürünü Sil",
+      message: "Bu ürünü sepetinizden tamamen silmek istiyor musunuz?",
+      buttons: [
+        {
+          label: "Evet",
+          onClick: () => dispatch(removeProductCompletely(product)),
+        },
+        {
+          label: "Hayır",
+          onClick: () => {},
+        },
+      ],
+    });
+  };
 
   return (
     <div className="relative">
@@ -46,7 +65,7 @@ const CartDropdown = () => {
                   key={index}
                   className="p-4 flex justify-between items-center gap-4"
                 >
-                  <div className="flex-1">
+                  <div>
                     <p className="text-sm font-medium text-slate-800">
                       {item.product.name}
                     </p>
@@ -62,7 +81,7 @@ const CartDropdown = () => {
                   />
 
                   <button
-                    onClick={() => dispatch(removeFromCart(item.product))}
+                    onClick={() => handleDelete(item.product)}
                     className="text-red-500 hover:text-red-700"
                     aria-label="Remove from cart"
                   >
@@ -79,22 +98,20 @@ const CartDropdown = () => {
             </p>
           </div>
 
-          {/* Butonlar */}
           <div className="flex justify-between gap-2 px-4 pb-4">
-  <Link
-    to="/cart"
-    className="flex-1 text-center py-2.5 bg-white text-slate-700 font-medium rounded-md border border-slate-300 hover:bg-slate-100 transition"
-  >
-    Sepete Git
-  </Link>
-  <Link
-    to="/checkout"
-    className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
-  >
-    Siparişi Tamamla
-  </Link>
-</div>
-
+            <Link
+              to="/cart"
+              className="flex-1 text-center py-2.5 bg-white text-slate-700 font-medium rounded-md border border-slate-300 hover:bg-slate-100 transition"
+            >
+              Sepete Git
+            </Link>
+            <Link
+              to="/checkout"
+              className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
+            >
+              Siparişi Tamamla
+            </Link>
+          </div>
         </div>
       )}
     </div>

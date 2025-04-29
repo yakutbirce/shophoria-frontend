@@ -4,6 +4,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Switch, Route, useLocation } from "react-router-dom";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "react-confirm-alert/src/react-confirm-alert.css";
 
 import Navbar from "./components/Navbar/Navbar";
 
@@ -31,6 +32,7 @@ import AboutPage from "./components/About/AboutPage";
 import { useDispatch } from "react-redux";
 import { autoLogin, setUser } from "./store/userSlice";
 import { fetchCategories } from "./store/reducers/categoryReducer";
+import CartPage from "./components/Cart/CartPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -124,8 +126,9 @@ function App() {
         </Route>
 
         <Route path="/cart">
-          <div className="text-center text-2xl mt-20">Cart Page</div>
-        </Route>
+  <CartPage />
+</Route>
+
 
         <Route path="/featured">
           <div className="text-center text-2xl mt-20 font-semibold text-slate-700">
