@@ -33,10 +33,7 @@ const ProductDescriptionSection = () => {
 
       {/* CONTENT */}
       <div className="flex flex-col md:flex-row md:items-start gap-12 max-w-[1050px] mx-auto">
-        {/* LEFT: IMAGE */}
-        <div className="flex-shrink-0 w-full md:w-1/3">
-          <div className="bg-gray-300 w-full h-[300px] md:h-[400px] rounded-md" />
-        </div>
+      
 
         {/* CENTER: HEADING + TEXTS */}
         <div className="w-full md:w-1/3">

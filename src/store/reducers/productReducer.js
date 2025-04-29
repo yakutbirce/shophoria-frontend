@@ -8,6 +8,7 @@ const SET_FETCH_STATE = "SET_FETCH_STATE";
 const SET_LIMIT = "SET_LIMIT";
 const SET_OFFSET = "SET_OFFSET";
 const SET_FILTER = "SET_FILTER";
+const SET_PRODUCT_DETAIL = "SET_PRODUCT_DETAIL";
 
 // Initial State
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   offset: 0,
   filter: "",
   sort: "",
+  productDetail: null,
 };
 
 // Reducer
@@ -41,6 +43,8 @@ const productReducer = (state = initialState, action) => {
       return { ...state, filter: action.payload };
       case "SET_SORT":
   return { ...state, sort: action.payload };
+  case SET_PRODUCT_DETAIL:
+  return { ...state, productDetail: action.payload };
 
     default:
       return state;
@@ -58,6 +62,7 @@ export const setLimit = (limit) => ({ type: SET_LIMIT, payload: limit });
 export const setOffset = (offset) => ({ type: SET_OFFSET, payload: offset });
 export const setFilter = (filter) => ({ type: SET_FILTER, payload: filter });
 export const setSort = (sort) => ({ type: "SET_SORT", payload: sort });
+export const setProductDetail = (product) => ({ type: SET_PRODUCT_DETAIL, payload: product });
 
 
 // Thunk: Kategorileri çek
@@ -96,6 +101,17 @@ export const fetchProducts = ({ categoryId, sort, filter, limit, offset } = {}) 
 };
 
 
+export const fetchProductDetail = (productId) => async (dispatch) => {
+  dispatch(setFetchState("FETCHING"));
+  try {
+    const { data } = await axiosInstance.get(`/products/${productId}`);
+    dispatch(setProductDetail(data));
+    dispatch(setFetchState("FETCHED"));
+  } catch (error) {
+    dispatch(setFetchState("FAILED"));
+    console.error("Ürün detayı çekilemedi:", error);
+  }
+};
 
 
 

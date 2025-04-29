@@ -32,7 +32,7 @@ const ShopPage = () => {
       <FilterRow />
       <ProductCardsSection key={categoryId} currentPage={currentPage} />
 
-      <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
+     
       <Clients />
     </section>
   );

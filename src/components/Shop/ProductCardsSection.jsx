@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchProducts } from "../../store/reducers/productReducer";
-import { useParams } from "react-router-dom";
-import { Link } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Spinner from "../common/Spinner";
 import Pagination from "../Shop/Pagination"; 
+
+
+
 
 // Ürün Kartı
 const ProductCard = ({ product }) => {
@@ -105,9 +107,15 @@ const ProductCardsSection = () => {
       <div className="flex flex-wrap justify-start max-w-[1300px]">
         {productList.map((product) => (
           <div key={product.id} className="w-full md:w-1/4">
-            <Link to={`/product/${product.id}`} className="block hover:cursor-pointer">
-              <ProductCard product={product} />
-            </Link>
+           <Link
+  to={`/shop/${gender}/${product.categoryName || "default"}/${product.category_id}/${product.name.toLowerCase().replace(/\s+/g, "-")}/${product.id}`}
+  className="block hover:cursor-pointer"
+>
+  <ProductCard product={product} />
+</Link>
+
+
+
           </div>
         ))}
       </div>
