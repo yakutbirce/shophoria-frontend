@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axiosInstance from "../services/axiosInstance";
 
-// ✅ Login işlemi için thunk
+// Login işlemi için thunk
 export const loginThunk = createAsyncThunk(
   "user/login",
   async (credentials, thunkAPI) => {
@@ -16,7 +16,7 @@ export const loginThunk = createAsyncThunk(
   }
 );
 
-// ✅ Otomatik login için thunk (localStorage token varsa /verify isteği atar)
+// Otomatik login için thunk (localStorage token varsa /verify isteği atar)
 export const autoLogin = createAsyncThunk(
   "user/autoLogin",
   async (token, thunkAPI) => {
@@ -65,7 +65,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // Giriş başarılıysa kullanıcı bilgisi state'e ve localStorage'a yazılır
+      
       .addCase(loginThunk.fulfilled, (state, action) => {
         state.userInfo = action.payload;
         localStorage.setItem("userInfo", JSON.stringify(action.payload));
@@ -76,7 +76,7 @@ const userSlice = createSlice({
         console.error("Login failed:", action.payload);
       })
 
-      // Otomatik login başarılıysa kullanıcı bilgisi setlenir
+     
       .addCase(autoLogin.fulfilled, (state, action) => {
         state.userInfo = action.payload;
         localStorage.setItem("userInfo", JSON.stringify(action.payload));

@@ -33,6 +33,7 @@ import { useDispatch } from "react-redux";
 import { autoLogin, setUser } from "./store/userSlice";
 import { fetchCategories } from "./store/reducers/categoryReducer";
 import CartPage from "./components/Cart/CartPage";
+import CreateOrderPage from "./pages/CreateOrderPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -124,10 +125,9 @@ function App() {
         <Route path="/search">
           <div className="text-center text-2xl mt-20">Search Page</div>
         </Route>
+        <Route path="/cart" component={CartPage} />
+<Route path="/create-order" component={CreateOrderPage} />
 
-        <Route path="/cart">
-  <CartPage />
-</Route>
 
 
         <Route path="/featured">

@@ -106,13 +106,14 @@ const CartDropdown = () => {
               Sepete Git
             </Link>
             <Link
-              to="/checkout"
-              className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
-            >
-              Siparişi Tamamla
-            </Link>
+  to="/create-order"
+  className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
+>
+  Siparişi Tamamla
+</Link>
+
           </div>
-        </div>
+        </div> 
       )}
     </div>
   );

@@ -1,11 +1,13 @@
 import React from "react";
-import { Plus, ArrowRight, ChevronRight } from "lucide-react";
+import { Plus, ChevronRight } from "lucide-react";
+import { useHistory } from "react-router-dom";
 
 const OrderSummaryBox = ({
   productTotal = 0,
   shippingPrice = 0,
   discountText = "150 TL ve Üzeri Kargo Bedava (Satıcı Karşılar)",
 }) => {
+  const history = useHistory();
   const grandTotal = productTotal + shippingPrice;
 
   return (
@@ -37,7 +39,7 @@ const OrderSummaryBox = ({
 
       {/* İndirim kodu butonu */}
       <button
-        className="mt-6 w-full flex items-center justify-center gap-2 border border-sky-600 text-sky-600 hover:bg-sky-50 font-medium py-2 rounded-md transition"
+        className=" cursor-pointer mt-6 w-full flex items-center justify-center gap-2 border border-sky-600 text-sky-600 hover:bg-sky-50 font-medium py-2 rounded-md transition"
         disabled
       >
         <Plus className="w-4 h-4" />
@@ -46,13 +48,12 @@ const OrderSummaryBox = ({
 
       {/* Sepeti Onayla butonu */}
       <button
-  className="mt-3 w-full flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-md font-medium transition"
-  disabled
->
-  SEPETİ ONAYLA
-  <ChevronRight className="w-4 h-4" />
-</button>
-
+        onClick={() => history.push("/create-order")}
+        className="mt-3 w-full flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-md font-medium transition"
+      >
+        SEPETİ ONAYLA
+        <ChevronRight className="w-4 h-4" />
+      </button>
     </div>
   );
 };
