@@ -36,11 +36,12 @@ const CartDropdown = () => {
 
   const handleCompleteOrder = () => {
     if (userInfo) {
-      history.push("/create-order");
+      history.push("/order-success"); 
     } else {
       history.push("/login");
     }
   };
+  
 
   return (
     <div className="relative">

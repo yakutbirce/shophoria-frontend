@@ -1,6 +1,6 @@
 import React from "react"; 
 import { Plus, ChevronRight } from "lucide-react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const OrderSummaryBox = ({
@@ -9,14 +9,21 @@ const OrderSummaryBox = ({
   discountText = "150 TL ve Üzeri Kargo Bedava (Satıcı Karşılar)",
 }) => {
   const history = useHistory();
+  const location = useLocation();
   const userInfo = useSelector((state) => state.user.userInfo); 
   const grandTotal = productTotal + shippingPrice;
 
   const handleSubmit = () => {
-    if (userInfo) {
-      history.push("/create-order");
+    if (location.pathname === "/create-order") {
+      
+      history.push("/order-success");
     } else {
-      history.push("/login");
+   
+      if (userInfo) {
+        history.push("/create-order");
+      } else {
+        history.push("/login");
+      }
     }
   };
 

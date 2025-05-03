@@ -34,6 +34,7 @@ import { autoLogin, setUser } from "./store/userSlice";
 import { fetchCategories } from "./store/reducers/categoryReducer";
 import CartPage from "./components/Cart/CartPage";
 import CreateOrderPage from "./pages/CreateOrderPage";
+import OrderSuccessPage from "./pages/OrderSuccessPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -146,6 +147,9 @@ function App() {
         <Route path="/contactus" component={ContactUsPage} />
         <Route path="/about" component={AboutPage} />
         <Route path="/team" component={TeamPage} />
+
+        <Route path="/order-success" component={OrderSuccessPage} />
+
 
         {/* Footer Link Sayfaları */}
         <Route path="/about-us" component={AboutPage} />

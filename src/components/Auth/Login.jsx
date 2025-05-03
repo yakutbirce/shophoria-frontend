@@ -76,21 +76,22 @@ const Login = () => {
   
       if (loginThunk.fulfilled.match(resultAction)) {
         const token = resultAction.payload.token;
+        const userInfo = resultAction.payload;
   
-        //  Her durumda header’a token koy
-        axiosInstance.defaults.headers.common["Authorization"] = token;
+       
+        axiosInstance.defaults.headers.common["Authorization"] = `Bearer ${token}`;
   
-        //  Sadece Remember Me işaretliyse localStoragea yaz, değilse sil
-        if (rememberMe) {
-          localStorage.setItem("token", token);
-        } else {
-          localStorage.removeItem("token");
-        }
+       
+        localStorage.setItem("token", token);
+        localStorage.setItem("userInfo", JSON.stringify(userInfo));
+  
+       
+        dispatch({ type: "user/setUser", payload: userInfo });
   
         toast.success("Login successful!");
         await new Promise((r) => setTimeout(r, 1500));
         setCompleted(true);
-        history.push("/");
+        history.push("/create-order"); 
       } else {
         throw new Error(resultAction.payload);
       }
@@ -100,6 +101,7 @@ const Login = () => {
       setSubmitting(false);
     }
   };
+  
   
 
   return (
