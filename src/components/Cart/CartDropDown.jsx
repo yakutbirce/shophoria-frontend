@@ -2,14 +2,16 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { X, Trash2, ShoppingCart } from "lucide-react";
 import { removeProductCompletely } from "../../store/reducers/cartReducer";
-import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 
 const CartDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
   const cart = useSelector((state) => state.cart.cart);
+  const userInfo = useSelector((state) => state.user.userInfo); 
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const totalPrice = cart.reduce((acc, item) => {
     return acc + item.product.price * item.count;
@@ -32,9 +34,16 @@ const CartDropdown = () => {
     });
   };
 
+  const handleCompleteOrder = () => {
+    if (userInfo) {
+      history.push("/create-order");
+    } else {
+      history.push("/login");
+    }
+  };
+
   return (
     <div className="relative">
-      {/* Toggle Button */}
       <button
         onClick={() => setIsOpen((prev) => !prev)}
         className="relative"
@@ -46,7 +55,6 @@ const CartDropdown = () => {
         <ShoppingCart className="w-6 h-6 text-slate-800" />
       </button>
 
-      {/* Dropdown Panel */}
       {isOpen && (
         <div className="absolute right-0 mt-2 w-80 bg-white shadow-lg rounded-lg border z-50">
           <div className="flex justify-between items-center p-4 border-b">
@@ -99,21 +107,20 @@ const CartDropdown = () => {
           </div>
 
           <div className="flex justify-between gap-2 px-4 pb-4">
-            <Link
-              to="/cart"
+            <button
+              onClick={() => history.push("/cart")}
               className="flex-1 text-center py-2.5 bg-white text-slate-700 font-medium rounded-md border border-slate-300 hover:bg-slate-100 transition"
             >
               Sepete Git
-            </Link>
-            <Link
-  to="/create-order"
-  className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
->
-  Siparişi Tamamla
-</Link>
-
+            </button>
+            <button
+              onClick={handleCompleteOrder}
+              className="flex-1 text-center py-2.5 bg-sky-500 text-white font-medium rounded-md hover:bg-sky-600 transition"
+            >
+              Siparişi Tamamla
+            </button>
           </div>
-        </div> 
+        </div>
       )}
     </div>
   );

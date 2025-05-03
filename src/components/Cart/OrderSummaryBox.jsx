@@ -1,6 +1,7 @@
-import React from "react";
+import React from "react"; 
 import { Plus, ChevronRight } from "lucide-react";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const OrderSummaryBox = ({
   productTotal = 0,
@@ -8,7 +9,16 @@ const OrderSummaryBox = ({
   discountText = "150 TL ve Üzeri Kargo Bedava (Satıcı Karşılar)",
 }) => {
   const history = useHistory();
+  const userInfo = useSelector((state) => state.user.userInfo); 
   const grandTotal = productTotal + shippingPrice;
+
+  const handleSubmit = () => {
+    if (userInfo) {
+      history.push("/create-order");
+    } else {
+      history.push("/login");
+    }
+  };
 
   return (
     <div className="w-full bg-white shadow-md rounded-lg p-5 text-sm mt-10 md:mt-0 md:w-[320px]">
@@ -37,18 +47,16 @@ const OrderSummaryBox = ({
         </div>
       </div>
 
-      {/* İndirim kodu butonu */}
       <button
-        className=" cursor-pointer mt-6 w-full flex items-center justify-center gap-2 border border-sky-600 text-sky-600 hover:bg-sky-50 font-medium py-2 rounded-md transition"
+        className="cursor-pointer mt-6 w-full flex items-center justify-center gap-2 border border-sky-600 text-sky-600 hover:bg-sky-50 font-medium py-2 rounded-md transition"
         disabled
       >
         <Plus className="w-4 h-4" />
         İNDİRİM KODU GİR
       </button>
 
-      {/* Sepeti Onayla butonu */}
       <button
-        onClick={() => history.push("/create-order")}
+        onClick={handleSubmit}
         className="mt-3 w-full flex items-center justify-center gap-2 bg-sky-600 hover:bg-sky-700 text-white py-2 rounded-md font-medium transition"
       >
         SEPETİ ONAYLA
